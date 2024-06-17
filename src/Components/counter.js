@@ -167,7 +167,7 @@ class Counter extends Component {
                                 <div className='DiagSubBox'>
 
                                     <h3 className='SintomaNome'>{sindrome.nome}</h3>
-                                    <h4 className='SintomaDesc'>Aqui estara uma breve descrição de cada sintoma </h4>
+                                    <h4 className='SintomaDesc'>{sindrome.sintomas.toString()}</h4>
                                 </div>
 
                                 <div className='CompatBox'>
