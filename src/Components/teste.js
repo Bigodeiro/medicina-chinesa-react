@@ -1,42 +1,29 @@
-import React from 'react'
+import React, { Component } from 'react';
 
-const teste = (props) => 
-{
-    const removeSintoma = (sintomaRemovido) => {
-        listaInputSintomas = listaInputSintomas.filter(sintoma => sintoma !== sintomaRemovido)
-        
-        
+class Teste extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            counter: 0
+        };
     }
-    
 
+    increaseCounter = () => {
+        this.setState(prevState => ({
+            counter: prevState.counter + 1
+        }), () => {
+            console.log(this.state.counter); // Console log the counter value
+        });
+    };
 
-    let listaInputSintomas = props.listaInputSintomas.split(', ')
-    
-    let listaSintomas = listaInputSintomas.map(
-        sintoma => (
-            
-            
-            <div className='Box' key={sintoma}>
-
-            <div className='SubBox'>
-
-                <h3 className='SintomaNome'>{sintoma}</h3>
-                <h4 className='SintomaDesc'>Aqui estara uma breve descrição de cada sintoma </h4>
+    render() {
+        return (
+            <div>
+                <h1>Counter: {this.state.counter}</h1>
+                <button onClick={this.increaseCounter}>Increase Counter</button>
             </div>
-
-            <button className='SelectButton' onClick={() => removeSintoma(sintoma)}>Selecionar</button>
-
-        </div>
-
-    ))
-
-
-
-    return (
-        <div className='ListaSelecionaveis'>
-            {listaSintomas}
-        </div>
-    )
+        );
+    }
 }
 
-export default teste
+export default Teste;

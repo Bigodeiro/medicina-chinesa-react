@@ -21,11 +21,16 @@ class Counter extends Component {
         this.state = {
             sintomasSelecionaveis: 
             [
-                "aversao ao frio", "febre", "aversao ao vento", "vomito", "sede",
-                "cefaleia", "obstrucao nasal", "coriza", "tosse",
-                "febre alta", "desejo por frio", "face vermelha", "congestao conjuntival", "agitacao", "dor nas articulacoes",
-                "corpo dolorido", "urina escura", "mialgia", "dor na garganta"
-
+                'agitacao',              'aversao ao frio',
+                'aversao ao vento',      'cefaleia',
+                'congestao conjuntival', 'coriza',
+                'corpo dolorido',        'desejo por frio',
+                'dor na garganta',       'dor nas articulacoes',
+                'face vermelha',         'febre',
+                'febre alta',            'mialgia',
+                'obstrucao nasal',       'sede',
+                'tosse',                 'urina escura',
+                'vomito'
             ],
             sintomasSelecionados: [],
 
@@ -66,37 +71,34 @@ class Counter extends Component {
     }
 
     selecionaSintoma(sintomaSelecionado) {
-        this.setState(() => ({
-            sintomasSelecionados: this.state.sintomasSelecionados.concat(sintomaSelecionado),
-            sintomasSelecionaveis: this.state.sintomasSelecionaveis.filter(sintoma => sintoma !== sintomaSelecionado),
-
-        })
-        )
-
-        for (let i = 0; i < this.state.sindromesPossiveis.length; i++)
-        {
-            this.state.sindromesPossiveis[i].compatibilidade = countCommonElements(this.state.sindromesPossiveis[i].sintomas, this.state.sintomasSelecionados) / this.state.sindromesPossiveis[i].sintomas.length
-        }
-        //sort sintomasSelecionaveis by alphabetical order
-        this.state.sintomasSelecionaveis.sort()
-
-        this.state.sindromesPossiveis.sort((a, b) => b.compatibilidade - a.compatibilidade)
+        
+        this.setState(prevState => ({
+            sintomasSelecionados: prevState.sintomasSelecionados.concat(sintomaSelecionado).sort(),
+            sintomasSelecionaveis: prevState.sintomasSelecionaveis.filter(sintoma => sintoma !== sintomaSelecionado).sort(),
+            sindromesPossiveis: prevState.sindromesPossiveis.map(sindrome => ({
+                nome: sindrome.nome,
+                sintomas: sindrome.sintomas,
+                compatibilidade: sindrome.compatibilidade += countCommonElements(sindrome.sintomas, [sintomaSelecionado]) / sindrome.sintomas.length
+            })).sort((a, b) => b.compatibilidade - a.compatibilidade)
+        }));
     }
     
+
+
     removeSintoma(sintomaRemovido) {
-        this.setState(() => ({
-            sintomasSelecionaveis: this.state.sintomasSelecionaveis.concat(sintomaRemovido),
-            sintomasSelecionados: this.state.sintomasSelecionados.filter(sintoma => sintoma !== sintomaRemovido)
+        this.setState(prevState => ({
+            sintomasSelecionaveis: prevState.sintomasSelecionaveis.concat(sintomaRemovido).sort(),
+            sintomasSelecionados: prevState.sintomasSelecionados.filter(sintoma => sintoma !== sintomaRemovido).sort(),
+            sindromesPossiveis: prevState.sindromesPossiveis.map(sindrome => ({
+                nome: sindrome.nome,
+                sintomas: sindrome.sintomas,
+                compatibilidade: sindrome.compatibilidade -= countCommonElements(sindrome.sintomas, [sintomaRemovido] ) / sindrome.sintomas.length
+            })).sort((a, b) => b.compatibilidade - a.compatibilidade)
         })
         )
-
-        for (let i = 0; i < this.state.sindromesPossiveis.length; i++)
-        {
-            this.state.sindromesPossiveis[i].compatibilidade = countCommonElements(this.state.sindromesPossiveis[i].sintomas, this.state.sintomasSelecionados) / this.state.sindromesPossiveis[i].sintomas.length
-        }
-
-        this.state.sindromesPossiveis.sort((a, b) => b.compatibilidade - a.compatibilidade)
     }
+
+
 
     render() {
         return (
