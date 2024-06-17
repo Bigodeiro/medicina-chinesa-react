@@ -109,7 +109,7 @@ class Counter extends Component {
             <div className='ListaSelecionaveis'>
 
                 <header className='Header'>
-                    <h2>Sintomas Selecionaveis*</h2>
+                    <h2>Sintomas Selecionaveis</h2>
                 </header>
 
                 {this.state.sintomasSelecionaveis.map(
