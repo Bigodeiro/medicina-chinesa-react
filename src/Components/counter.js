@@ -21,49 +21,49 @@ class Counter extends Component {
         this.state = {
             sintomasSelecionaveis: 
             [
-                'agitacao',              'aversao ao frio',
-                'aversao ao vento',      'cefaleia',
-                'congestao conjuntival', 'coriza',
-                'corpo dolorido',        'desejo por frio',
-                'dor na garganta',       'dor nas articulacoes',
-                'face vermelha',         'febre',
-                'febre alta',            'mialgia',
-                'obstrucao nasal',       'sede',
-                'tosse',                 'urina escura',
-                'vomito'
+                ' Agitação',              ' Aversão ao frio',
+                ' Aversão ao vento',      ' Cefaleia',
+                ' Congestão conjuntival', ' Coriza',
+                ' Corpo dolorido',        ' Desejo por frio',
+                ' Dor na garganta',       ' Dor nas articulações',
+                ' Face vermelha',         ' Febre',
+                ' Febre alta',            ' Mialgia',
+                ' Obstrução nasal',       ' Sede',
+                ' Tosse',                 ' Urina escura',
+                ' Vômito'
             ],
             sintomasSelecionados: [],
 
             sindromesPossiveis: 
             [
                 {
-                    nome: "Síndrome de Frio do Exterior",
-                    sintomas: ["aversao ao frio", "febre", "cefaleia", "corpo dolorido"],
+                    nome: " Síndrome de Frio do Exterior",
+                    sintomas: [" Aversão ao frio", " Febre", " Cefaleia", " Corpo dolorido"],
                     compatibilidade: 0, 
                 },
                 {
-                    nome: "Síndrome de Calor por Excesso",
-                    sintomas: ["febre", "desejo por frio", "face vermelha", "congestao conjuntival", "agitacao", "urina escura", ] ,
+                    nome: " Síndrome de Calor por Excesso",
+                    sintomas: [" Febre", " Desejo por frio", " Face vermelha", " Congestão conjuntival", " Agitação", " Urina escura", ] ,
                     compatibilidade: 0,
                 },
                 {
-                    nome: "Sindrome devido ao Frio",
-                    sintomas: ["aversao ao frio", "cefaleia", "mialgia", "dor nas articulacoes"],
+                    nome: " Síndrome devido ao Frio",
+                    sintomas: [" Aversão ao frio", " Cefaleia", " Mialgia", " Dor nas articulações"],
                     compatibilidade: 0, 
                 },
                 {
-                    nome: "Síndrome devido ao Vento",
-                    sintomas: ["obstrucao nasal", "tosse", "aversao ao vento", "febre"],
+                    nome: " Síndrome devido ao Vento",
+                    sintomas: [" Obstrução nasal", " Tosse", " Aversão ao vento", " Febre"],
                     compatibilidade: 0, 
                 },
                 {
-                    nome: "Síndrome devido ao Fogo",
-                    sintomas: ["cefaleia", "aversao ao frio", "febre", "dor na garganta"],
+                    nome: " Síndrome devido ao Fogo",
+                    sintomas: [" Cefaleia", " Aversão ao frio", " Febre", " Dor na garganta"],
                     compatibilidade: 0, 
                 }, 
-                               {
-                    nome: "Síndrome devido à Secura",
-                    sintomas: ["sede", "aversao ao vento", "aversao ao frio", "febre"],
+                {
+                    nome: " Síndrome devido à Secura",
+                    sintomas: [" Sede", " Aversão ao vento", " Aversão ao frio", " Febre"],
                     compatibilidade: 0, 
                 }
             ]

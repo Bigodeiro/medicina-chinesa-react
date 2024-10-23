@@ -3,6 +3,7 @@
   height: 100%;
   display: flex;
   text-align: center;
+  background-color: rgb(255, 142, 142);
 }
 
 .App-logo {
@@ -34,20 +35,21 @@
 .ui {
   display: flex;
   width: 100%;
+  align-items: center-horizontally;
 }
 
-.ListaSelecionaveis {
+.ListaSintomas {
   background-color: #f1f1f1b6;
-  width: 30%;
+  width: 40%;
   justify-content: center;
   align-items: center;
   margin: 10px;
   
 }
 
-.ListaSelecionados {
+.SintomasSelecionados {
   background-color: #f1f1f1b6;
-  width: 30%;
+  width: 40%;
   justify-content: center;
   align-items: center;
   margin: 10px;
@@ -62,6 +64,23 @@
   text-decoration: none;
   font-size: 16px;
   cursor: pointer;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  overflow: hidden;
+}
+
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 300px; /* Adjust width as needed */
+  margin-right: 10px;
 }
 
 .Box {
@@ -109,10 +128,10 @@
   text-align: justify;
 }
 
-.diagnostico
+.PossiveisSindromes
 {  
   background-color: #f1f1f1b6;
-  width: 30%;
+  width: 40%;
   justify-content: center;
   align-items: center;
   margin: 10px;
