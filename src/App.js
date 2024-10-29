@@ -149,15 +149,19 @@ function App() {
                             <div className='SubBox'>
                                 <h3 className='SindromeNome'>{sindrome.name}</h3>
 								
-								{/* Descrição da Síndrome */}
+								{/* Verificação da descrição vazia */}
                                 <h4 className='SindromeDesc'>
-									{expandedDescriptions[sindrome.id] 
-										? sindrome.description 
-										: truncateText(sindrome.description, 30)}
+									{sindrome.description && sindrome.description.trim() !== ""
+										? (expandedDescriptions[sindrome.id] 
+											? sindrome.description 
+											: truncateText(sindrome.description, 30))
+										: "Descrição não disponível"}
 								</h4>
-								<button onClick={() => toggleDescription(sindrome.id)}>
-									{expandedDescriptions[sindrome.id] ? 'Colapsar' : 'Expandir'}
-								</button>
+								{sindrome.description && sindrome.description.trim() !== "" && (
+									<button onClick={() => toggleDescription(sindrome.id)}>
+										{expandedDescriptions[sindrome.id] ? 'Colapsar' : 'Expandir'}
+									</button>
+								)}
 
 								{/* Lista de sintomas da Síndrome */}
 								<h5>Sintomas:</h5>
