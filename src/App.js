@@ -95,19 +95,21 @@ function App() {
 			{/* Lista de sintomas selecionáveis */}
 			<div className='ListaSintomas'>
 				<h2>Sintomas Disponíveis</h2>
-				<input 
-					className='search-bar' 
-					type="text" 
-					value={query} 
-					onChange={(e) => setQuery(e.target.value)} 
-				/>
+				<div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+					<input 
+						className='search-bar' 
+						type="text" 
+						value={query} 
+						onChange={(e) => setQuery(e.target.value)} 
+					/>
+				</div>
 				<ul>
 					{sortedSintomasSelecionaveis.map((sintoma, index) => (
 						<div className='Box' key={index}>
 							<div className='SubBox'>
 								<h3 className='SintomaNome'>{sintoma.name}</h3>
-								<h4 className='SintomaDesc'>Aqui estara uma breve descrição de cada sintoma</h4>
-								<p>Numero de ocorrências: {sintoma.count}</p>
+								{/* <h4 className='SintomaDesc'>Aqui estara uma breve descrição de cada sintoma</h4> */}
+								{/* <p>Numero de ocorrências: {sintoma.count}</p> */}
 							</div>
 							<button 
 								className='SelectButton' 
@@ -127,8 +129,8 @@ function App() {
 						<div className='Box' key={index}>
 							<div className='SubBox'>
 								<h3 className='SintomaNome'>{sintoma.name}</h3>
-								<h4 className='SintomaDesc'>Aqui estara uma breve descrição de cada sintoma</h4>
-								<p>Numero de ocorrências: {sintoma.count}</p>
+								{/* <h4 className='SintomaDesc'>Aqui estara uma breve descrição de cada sintoma</h4>
+								<p>Numero de ocorrências: {sintoma.count}</p> */}
 							</div>
 							<button 
 								className='RemoveButton' 
@@ -149,19 +151,15 @@ function App() {
                             <div className='SubBox'>
                                 <h3 className='SindromeNome'>{sindrome.name}</h3>
 								
-								{/* Verificação da descrição vazia */}
+								{/* Descrição da Síndrome */}
                                 <h4 className='SindromeDesc'>
-									{sindrome.description && sindrome.description.trim() !== ""
-										? (expandedDescriptions[sindrome.id] 
-											? sindrome.description 
-											: truncateText(sindrome.description, 30))
-										: "Descrição não disponível"}
+									{expandedDescriptions[sindrome.id] 
+										? sindrome.description 
+										: truncateText(sindrome.description, 30)}
 								</h4>
-								{sindrome.description && sindrome.description.trim() !== "" && (
-									<button onClick={() => toggleDescription(sindrome.id)}>
-										{expandedDescriptions[sindrome.id] ? 'Colapsar' : 'Expandir'}
-									</button>
-								)}
+								<button onClick={() => toggleDescription(sindrome.id)}>
+									{expandedDescriptions[sindrome.id] ? 'Colapsar Descrição' : 'Expandir Descrição'}
+								</button>
 
 								{/* Lista de sintomas da Síndrome */}
 								<h5>Sintomas:</h5>
